@@ -1,0 +1,27 @@
+This repository is about file server using linaro-license-protection.
+If you don't want to create docker image, then skip 1-5 steps.
+
+1. ubuntu 16.04 base pull
+$ docker pull ubuntu:16.04
+
+2. user add
+Create base docker image.
+$ docker run --name myubuntu ubuntu:16.04
+$ docker attach myubuntu
+# adduser nexell
+# exit
+$ docker commit -a "nexell" -m "ubuntu 16.04 adduser nexell" myubuntu nexell/ubuntu16-04
+
+3. Create base fileserver docker image
+$ docker build -t nexell/fileserver-base .
+
+4. Create release server docker image
+$ cd deploy-releases
+$ docker build -t nexell/fileserver-releases .
+
+5. Create snapshot server docker image
+$ cd deploy-snapshot
+$ docker build -t nexell/fileserver-snapshot .
+
+6. Run fileserver docker container
+$ ./run.sh
