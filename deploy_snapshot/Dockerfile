@@ -13,11 +13,11 @@ COPY deploy-file-server-snapshot.sh /usr/local/bin/deploySnapshots
 
 RUN /usr/local/bin/deploySnapshots
 
-VOLUME [ "/srv/snapshots.nexell.co.kr/www" ]
-WORKDIR /srv/snapshots.nexell.co.kr/www
+VOLUME [ "/srv/snapshots.test.co.kr/www" ]
+WORKDIR /srv/snapshots.test.co.kr/www
 
 COPY snapshots.conf /etc/apache2/sites-available/snapshots.conf
-COPY header.html /srv/snapshots.nexell.co.kr/linaro-license-protection/templates/header.html
+COPY header.html /srv/snapshots.test.co.kr/linaro-license-protection/templates/header.html
 RUN echo "Listen 8080" >> /etc/apache2/ports.conf
 
 RUN a2enmod xsendfile

@@ -8,20 +8,32 @@ $ docker pull ubuntu:16.04
 Create base docker image.
 $ docker run -it --name myubuntu ubuntu:16.04
 $ docker attach myubuntu
-# adduser nexell
+# adduser test 
 # exit
-$ docker commit -a "nexell" -m "ubuntu 16.04 adduser nexell" myubuntu nexell/ubuntu16-04
+$ docker commit -a "test" -m "ubuntu 16.04 adduser test" myubuntu seojikim/ubuntu16-04
 
 3. Create base fileserver docker image
-$ docker build -t nexell/fileserver-base .
+$ docker build -t seojikim/fileserver-base .
 
 4. Create release server docker image
 $ cd deploy-releases
-$ docker build -t nexell/fileserver-releases .
+$ docker build -t seojikim/fileserver-releases .
 
 5. Create snapshot server docker image
 $ cd deploy-snapshot
-$ docker build -t nexell/fileserver-snapshot .
+$ docker build -t seojikim/fileserver-snapshot .
 
-6. Run fileserver docker container
+6. Add disk mount info to fstab
+$ vi /etc/fstab
+UUID=c4f1db52-936c-4264-963b-7b5205171dad /home/snapshot/snapshot_mnt auto errors=remount-ro 0 1
+
+7. Run fileserver docker container
 $ ./run.sh
+
+7. Etc
+- To modify server name as you want, change below files.
+deploy_releases/header.html
+deploy_snapshot/header.html
+- To change directory name in container, you should change both repos.
+https://github.com/seojineer/infrastructure_server_linaro-license-protection.git
+https://github.com/seojineer/infrastructure_server_linaro-license-protection-configs.git

@@ -13,11 +13,11 @@ COPY deploy-file-server-releases.sh /usr/local/bin/deployReleases
 
 RUN /usr/local/bin/deployReleases
 
-VOLUME [ "/srv/releases.nexell.co.kr/www" ]
-WORKDIR /srv/releases.nexell.co.kr/www
+VOLUME [ "/srv/releases.test.co.kr/www" ]
+WORKDIR /srv/releases.test.co.kr/www
 
 COPY releases.conf /etc/apache2/sites-available/releases.conf
-COPY header.html /srv/releases.nexell.co.kr/linaro-license-protection/templates_releases/header.html
+COPY header.html /srv/releases.test.co.kr/linaro-license-protection/templates_releases/header.html
 RUN echo "Listen 8090" >> /etc/apache2/ports.conf
 
 RUN a2enmod xsendfile
