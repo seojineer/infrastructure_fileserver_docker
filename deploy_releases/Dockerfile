@@ -1,4 +1,4 @@
-FROM nexell/fileserver-base
+FROM seojikim/fileserver-base
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
