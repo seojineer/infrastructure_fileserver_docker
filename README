@@ -6,7 +6,7 @@ $ docker pull ubuntu:16.04
 
 2. user add
 Create base docker image.
-$ docker run --name myubuntu ubuntu:16.04
+$ docker run -it --name myubuntu ubuntu:16.04
 $ docker attach myubuntu
 # adduser nexell
 # exit
